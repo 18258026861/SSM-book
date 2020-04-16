@@ -9,6 +9,29 @@
 <html>
   <head>
     <title>主页</title>
+    <style>
+<%--      为h3标签设计样式--%>
+      a{
+        /*取消下划线*/
+        text-decoration: none;
+        color: black;
+        font-size: larger;
+      }
+      h3{
+          width: 180px;
+          height: 38px;
+          /*距离顶部高度*/
+          margin:100px auto;
+          text-align: center;
+        /行高和字体高度一样*/
+          line-height: 38px;
+        /*背景颜色*/
+        background: blueviolet;
+
+      /*  圆角边框*/
+        border-radius: 5px;
+      }
+    </style>
   </head>
   <body>
   <h3>
