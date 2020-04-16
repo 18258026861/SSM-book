@@ -5,8 +5,8 @@
 <mapper namespace="yzy.dao.BookMapper">
 
     <insert id="addBook" parameterType="Book">
-        insert into books
-        values (#{bookID},#{bookName},#{bookCounts},#{detail})
+        insert into books(bookName,bookCounts,detail)
+        values (#{bookName},#{bookCounts},#{detail})
     </insert>
 
 
@@ -32,7 +32,7 @@
         </set>
     </update>
 
-    <select id="findBook" resultType="Book">
+    <select id="findBookByName" resultType="Book">
         select * from books where bookName = #{bookName}
     </select>
 

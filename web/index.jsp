@@ -35,7 +35,7 @@
   </head>
   <body>
   <h3>
-    <a href="${pageContext.request.contextPath}/book/findAll">查看所有书籍</a>
+    <a href="${pageContext.request.contextPath}/book/findAllBook">查看所有书籍</a>
   </h3>
 
   </body>

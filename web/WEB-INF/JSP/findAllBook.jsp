@@ -34,20 +34,20 @@
                 </h1>
             </div>
         </div>
+    </div>
     <div class="row clearfix">
         <div  class="col-md-12 column-drag-header">
             <div align="center">
                 <ul  class="nav nav-tabs">
                 <%--                    class=active表示这个选项即为点前页面，不可点击--%>
-                <li class="active"><a href="#">书籍列表</a></li>
-                <li ><a href="#">删除书籍</a></li>
-                <li ><a href="#">Practice Editor </a></li>
-                <li ><a href="#">Gallery</a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/book/findAllBook">书籍列表</a></li>
+                <li ><a href="${pageContext.request.contextPath}/book/addBookPage">新增书籍</a></li>
+                <li ><a href="${pageContext.request.contextPath}/book/queryBookPage">查询书籍</a></li>
+                <li ><a href="${pageContext.request.contextPath}/book/updateBookPage">修改书籍</a></li>
             </ul></div>
-
         </div>
     </div>
-    </div>
+
 
     <div class="row clearfix">
         <div class="col-md-12 column-drag-header">
@@ -58,6 +58,7 @@
                         <th>书籍名称</th>
                         <th>书籍数量</th>
                         <th>书籍介绍</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,6 +69,14 @@
                             <td>${book.bookName}</td>
                             <td>${book.bookCounts}</td>
                             <td>${book.detail}</td>
+                            <td>
+                                <h3>
+                                                                                    <%--          获取bookID的参数用于执行sql语句   --%>
+                                    <a href="${pageContext.request.contextPath}/book/delete?bookID=${book.bookID}">删除</a>
+                                     |
+                                    <a href="${pageContext.request.contextPath}/book/updateBookPage?bookID=${book.bookID}">修改</a>
+                                </h3>
+                            </td>
                         </tr>
                     </c:forEach>
                 </tbody>
@@ -75,5 +84,26 @@
         </div>
     </div>
 </div>
+
+<%--弹窗--%>
+<script type="text/javascript">
+
+        <%--var user='<%=request.getAttribute("msg")%>'; //这种方法取出来是user是String类型--%>
+        var msg='${msg}'; //这种方法取出来是user是String类型
+        switch (msg) {
+            case "增加成功":
+                alert(msg);
+                break;
+            case "增加失败":
+                alert(msg);
+                break;
+            case "删除成功":
+                alert(msg);
+                break;
+            case "删除失败":
+                alert(msg);
+                break;
+        }
+</script>
 </body>
 </html>

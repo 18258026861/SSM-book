@@ -35,8 +35,8 @@ public class BookServiceImpl implements IBookService{
         return mapper.updateBook(book);
     }
 
-    public List<Book> findBook(String name) {
-        return mapper.findBook(name);
+    public List<Book> findBookByName(String name) {
+        return mapper.findBookByName(name);
     }
 
     public List<Book> findAllBook() {

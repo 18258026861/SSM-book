@@ -17,7 +17,7 @@ public interface IBookService {
     //    改
     int updateBook(Book book);
     //    查
-    List<Book> findBook(String name);
+    List<Book> findBookByName(String name);
 
     List<Book> findAllBook();
 

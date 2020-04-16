@@ -14,6 +14,12 @@ public class Book {
     public Book() {
     }
 
+    public Book(String bookName, int bookCounts, String detail){
+        this.bookName = bookName;
+        this.bookCounts = bookCounts;
+        this.detail = detail;
+    }
+
     public Book(int bookID, String bookName, int bookCounts, String detail) {
         this.bookID = bookID;
         this.bookName = bookName;
