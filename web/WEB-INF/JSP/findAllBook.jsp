@@ -40,12 +40,29 @@
             <div align="center">
                 <ul  class="nav nav-tabs">
                 <%--                    class=active表示这个选项即为点前页面，不可点击--%>
-                <li class="active"><a href="${pageContext.request.contextPath}/book/findAllBook">书籍列表</a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/book/findAllBook">查找所有书籍</a></li>
                 <li ><a href="${pageContext.request.contextPath}/book/addBookPage">新增书籍</a></li>
-                <li ><a href="${pageContext.request.contextPath}/book/queryBookPage">查询书籍</a></li>
-                <li ><a href="${pageContext.request.contextPath}/book/updateBookPage">修改书籍</a></li>
             </ul></div>
         </div>
+    </div>
+    <div class="row clearfix">
+    <div class="col-md-12">
+    <form class="form-inline" action="${pageContext.request.contextPath}/book/findByName" class="form-horizontal" role="form">
+        <div class="form-group">
+            <%--                              占据12格中的3格    右对齐--%>
+            <label class="col-md-8 control-label">书籍名称</label>
+            <div class="col-sm-8" >
+                <input type="text" class="form-control"  name="bookName" placeholder="请输入书籍名称" required >
+            </div>
+        </div>
+        <div class="form-group">
+            <%--                    相对于左侧偏移、推、拉 ,offset-4:在左侧补充4列--%>
+            <div class="col-sm-offset-4 col-sm-10">
+                <button type="submit" class="btn btn-default">查询</button>
+            </div>
+        </div>
+    </form>
+    </div>
     </div>
 
 
@@ -71,10 +88,10 @@
                             <td>${book.detail}</td>
                             <td>
                                 <h3>
-                                                                                    <%--          获取bookID的参数用于执行sql语句   --%>
-                                    <a href="${pageContext.request.contextPath}/book/delete?bookID=${book.bookID}">删除</a>
-                                     |
+                                        <%--          获取bookID的参数用于执行sql语句   --%>
                                     <a href="${pageContext.request.contextPath}/book/updateBookPage?bookID=${book.bookID}">修改</a>
+                                      |
+                                    <a href="${pageContext.request.contextPath}/book/delete?bookID=${book.bookID}">删除</a>
                                 </h3>
                             </td>
                         </tr>

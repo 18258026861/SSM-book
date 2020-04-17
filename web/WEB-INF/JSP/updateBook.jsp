@@ -32,10 +32,9 @@
             <div align="center">
                 <ul  class="nav nav-tabs">
                     <%--                    class=active表示这个选项即为点前页面，不可点击--%>
-                    <li class="active"><a href="${pageContext.request.contextPath}/book/findAllBook">书籍列表</a></li>
+                    <li ><a href="${pageContext.request.contextPath}/book/findAllBook">书籍列表</a></li>
                     <li ><a href="${pageContext.request.contextPath}/book/addBookPage">新增书籍</a></li>
                     <li ><a href="${pageContext.request.contextPath}/book/queryBookPage">查询书籍</a></li>
-                    <li ><a href="${pageContext.request.contextPath}/book/updateBookPage">修改书籍</a></li>
                 </ul></div>
         </div>
     </div>
@@ -54,21 +53,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                <%--                    数据从数据库中查出来，还要遍历foreach--%>
-                <c:forEach var="book" items="${updatebook}">
+
                     <tr>
                         <td>${updatebook.bookID}</td>
                         <td>${updatebook.bookName}</td>
                         <td>${updatebook.bookCounts}</td>
                         <td>${updatebook.detail}</td>
                     </tr>
-                </c:forEach>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-<form action="${pageContext.request.contextPath}/book/update" class="form-horizontal" role="form">
+<form  action="${pageContext.request.contextPath}/book/update" class="form-horizontal" role="form">
     <div class="form-group">
         <label class="col-sm-2 control-label">书籍id</label>
         <div class="col-sm-10">
@@ -99,5 +96,18 @@
         </div>
     </div>
 </form>
+<script type="text/javascript">
+
+    <%--var user='<%=request.getAttribute("msg")%>'; //这种方法取出来是user是String类型--%>
+    var msg='${msg}'; //这种方法取出来是user是String类型
+    switch (msg) {
+        case "修改成功":
+            alert(msg);
+            break;
+        case "修改失败":
+            alert(msg);
+            break;
+    }
+</script>
 </body>
 </html>

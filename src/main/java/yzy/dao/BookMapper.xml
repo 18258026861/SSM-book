@@ -18,22 +18,22 @@
         update books
         <set>
             <if test="bookName != null">
-                bookName = #{bookName}
+                bookName = #{bookName},
             </if>
             <if test="bookCounts != null">
-                bookCounts = #{bookCounts}
+                bookCounts = #{bookCounts},
             </if>
              <if test="detail != null">
                  detail = #{detail}
              </if>
-             <where>
-                 bookID = #{bookID}
-             </where>
+
+              where bookID = #{bookID}
+
         </set>
     </update>
 
     <select id="findBookByName" resultType="Book">
-        select * from books where bookName = #{bookName}
+        select * from books where bookName like #{bookName}
     </select>
 
     <select id="findAllBook" resultType="Book">

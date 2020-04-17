@@ -49,11 +49,35 @@ public class BookController {
         return "findAllBook";
     }
 
+//  跳转到 查询书籍页面
+    @RequestMapping("/queryBookPage")
+    public String queryBookPage(){
+        return "queryBook";
+    }
+
+
 //      跳转 修改书籍页面
     @RequestMapping("/updateBookPage")
     public String updateBookPage(int bookID,Model model){
+//     通过表单传送的ID来查询书籍。
+//     那么我修改完之后想在这个页面现实修改后的信息该怎么接收到bookID呢，毕竟修改完没有form提交这个流程，就接收不到参数了，只能再创建一个方法用于修改后的显示
         Book book = bookService.findBookById(bookID);
+        request.getSession().removeAttribute("msg");
         model.addAttribute("updatebook",book);
+        return "updateBook";
+    }
+
+
+    //      修改完后   的跳转修改书籍页面
+//    问题：没有弹窗，因为没有传msg
+    @RequestMapping("/updateBookPage2")
+    public String updateBookPage2(Model model){
+
+        Object bookID =request.getSession().getAttribute("updateBookID");
+        Object msg = request.getSession().getAttribute("msg");
+        Book book = bookService.findBookById((Integer) bookID);
+        model.addAttribute("updatebook",book);
+        model.addAttribute("msg",msg);
         return "updateBook";
     }
 
@@ -80,6 +104,7 @@ public class BookController {
             request.getSession().setAttribute("msg", "增加失败");
         }
 //        return "forward:/book/findAllBook";
+//        使用转发，刷新页面会不断增加
         return "redirect:/book/findAllBook";
     }
 
@@ -87,16 +112,24 @@ public class BookController {
     @RequestMapping("/update")
     public String updateBook(Book book,Model model){
         int i = bookService.updateBook(book);
-        if(i<0){
-            model.addAttribute("msg","修改成功");
+        if(i>0){
+            request.getSession().setAttribute("msg","修改成功");
         }
         else{
-            model.addAttribute("msg","修改失败");
+            request.getSession().setAttribute("msg","修改失败");
         }
-        model.addAttribute("updatebook",book.getBookID());
-        return "/book/updateBookPage";
+        request.getSession().setAttribute("updateBookID",book.getBookID());
+//        model.addAttribute("updatebook",book.getBookID());
+        return "redirect:/book/updateBookPage2";
     }
 
+    @RequestMapping("/findByName")
+    public String findByName(String bookName,Model model){
+        List<Book> bookByName = bookService.findBookByName(bookName);
+        model.addAttribute("book",bookByName);
+        return "findAllBook";
+
+    }
 
 
 }

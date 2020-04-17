@@ -36,7 +36,6 @@
                         <li ><a href="${pageContext.request.contextPath}/book/findAllBook">书籍列表</a></li>
                         <li class="active"><a href="${pageContext.request.contextPath}/book/addBookPage">新增书籍</a></li>
                         <li ><a href="${pageContext.request.contextPath}/book/queryBookPage">查询书籍</a></li>
-                        <li ><a href="${pageContext.request.contextPath}/book/updateBookPage">修改书籍</a></li>
                     </ul>
                 </div>
             </div>
@@ -46,19 +45,19 @@
 <form action="${pageContext.request.contextPath}/book/add" class="form-horizontal" role="form">
     <div class="form-group">
         <label class="col-sm-2 control-label">书籍名称</label>
-        <div class="col-sm-10">
+        <div class="col-sm-8">
             <input type="text" class="form-control"  name="bookName" placeholder="请输入书籍名称" required>
         </div>
     </div>
     <div class="form-group">
         <label  class="col-md-2 control-label">书籍数量</label>
-        <div class="col-sm-10">
+        <div class="col-sm-8">
             <input type="text" class="form-control"  name="BookCounts" placeholder="请输入书籍名称" required>
         </div>
     </div>
     <div class="form-group">
         <label  class="col-sm-2 control-label">书籍介绍</label>
-        <div class="col-sm-10">
+        <div class="col-sm-8">
             <input type="text" class="form-control"  name="detail" placeholder="请输入书籍名称" required>
         </div>
     </div>
